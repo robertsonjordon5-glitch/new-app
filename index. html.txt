@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Global Trader Toolkit</title>
+<style>
+  body { margin: 0; padding: 0; background-color: #0B1528; color: white; font-family: sans-serif; padding-bottom: 120px; }
+  .header { padding: 20px; text-align: center; color: #00E676; font-size: 24px; font-weight: bold; border-bottom: 1px solid #1E293B; }
+  .tab-content { display: none; padding: 20px; }
+  .active-tab { display: block; }
+  .card { background-color: #1E293B; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+  input, select { width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 15px; background: #0B1528; color: white; border: 1px solid #00E676; border-radius: 5px; box-sizing: border-box; }
+  .nav-bar { position: fixed; bottom: 50px; left: 0; width: 100%; background-color: #1E293B; display: flex; justify-content: space-around; padding: 15px 0; }
+  .nav-item { color: white; text-decoration: none; font-size: 14px; cursor: pointer; text-align: center; width: 33%; }
+  .nav-active { color: #00E676; font-weight: bold; }
+  .ad-banner { position: fixed; bottom: 0; left: 0; width: 100%; height: 50px; background-color: #000; text-align: center; line-height: 50px; color: #888; font-size: 12px; font-weight: bold; border-top: 1px solid #333; }
+  .clock-flex { display: flex; justify-content: space-between; align-items: center; }
+  .badge-open { background: rgba(0, 230, 118, 0.2); color: #00E676; padding: 5px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+  .badge-closed { background: rgba(230, 0, 0, 0.2); color: #ff4d4d; padding: 5px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div class="header">Trader Toolkit</div>
+
+<div id="tab-converter" class="tab-content active-tab">
+  <div class="card">
+    <label>Amount (USD/CAD/GBP)</label>
+    <input type="number" placeholder="Enter amount...">
+    <label>Result in JMD</label>
+    <input type="text" readonly placeholder="Live rate output...">
+  </div>
+</div>
+
+<div id="tab-clocks" class="tab-content">
+  <div class="card clock-flex"><span>Jamaica (JSE)</span> <span class="badge-open">OPEN</span></div>
+  <div class="card clock-flex"><span>New York (NYSE)</span> <span class="badge-open">OPEN</span></div>
+  <div class="card clock-flex"><span>London (LSE)</span> <span class="badge-closed">CLOSED</span></div>
+  <div class="card clock-flex"><span>Tokyo (TSE)</span> <span class="badge-closed">CLOSED</span></div>
+</div>
+
+<div id="tab-translator" class="tab-content">
+  <div class="card">
+    <label>Enter Text:</label>
+    <input type="text" placeholder="Type here...">
+    <label>Translation:</label>
+    <input type="text" readonly placeholder="Output will appear here...">
+  </div>
+</div>
+
+<div class="nav-bar">
+  <div class="nav-item nav-active" onclick="switchTab('converter', this)">Converter</div>
+  <div class="nav-item" onclick="switchTab('clocks', this)">Clocks</div>
+  <div class="nav-item" onclick="switchTab('translator', this)">Translator</div>
+</div>
+
+<div class="ad-banner">AdMob Banner Unit (320x50)</div>
+
+<script>
+  function switchTab(tabId, element) {
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active-tab'));
+    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('nav-active'));
+    document.getElementById('tab-' + tabId).classList.add('active-tab');
+    element.classList.add('nav-active');
+  }
+</script>
+
+</body>
+</html>
